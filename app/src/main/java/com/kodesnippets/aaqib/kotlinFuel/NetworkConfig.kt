@@ -1,8 +1,13 @@
 package com.kodesnippets.aaqib.kotlinFuel
 
 import android.util.Log
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.android.extension.responseJson
 import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPost
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 /**
@@ -10,22 +15,29 @@ import com.github.kittinunf.fuel.httpGet
  */
 object NetworkConfig {
 
-     fun getRequest(url:String, success:(String)->Unit, failure: (FuelError)->Unit){
+     fun getRequest(url:String, success:(Any)->Unit, failure: (FuelError)->Unit){
 
-      url.httpGet().responseString{request, response, result ->
+       Fuel.get(url).responseJson{request, response, result ->
 
           val (data, error) = result
          if (error != null){
              Log.v("Error",error!!.toString())
              failure(error)
          }else{
-             val onSuccess = data ?: return@responseString
+             val onSuccess = data ?: return@responseJson
             success(onSuccess)
+             if (onSuccess.array() is JSONArray){
+                 success(onSuccess.array())
+             }
+             else if (onSuccess.obj() is JSONObject){
+                 success(onSuccess.obj())
+             }
 
          }
 
       }
 
+         
 
 
     }
