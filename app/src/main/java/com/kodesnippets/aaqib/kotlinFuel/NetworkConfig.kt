@@ -15,32 +15,29 @@ import org.json.JSONObject
  */
 object NetworkConfig {
 
-     fun getRequest(url:String, success:(Any)->Unit, failure: (FuelError)->Unit){
+    fun getRequest(url: String, success: (String) -> Unit, failure: (FuelError) -> Unit) {
 
-       Fuel.get(url).responseJson{request, response, result ->
+        Fuel.get(url).responseString { request, response, result ->
 
-          val (data, error) = result
-         if (error != null){
-             Log.v("Error",error!!.toString())
-             failure(error)
-         }else{
-             val onSuccess = data ?: return@responseJson
-            success(onSuccess)
-             if (onSuccess.array() is JSONArray){
-                 success(onSuccess.array())
-             }
-             else if (onSuccess.obj() is JSONObject){
-                 success(onSuccess.obj())
-             }
+            val (data, error) = result
+            if (error != null) {
+                Log.v("Error", error!!.toString())
+                failure(error)
+            } else {
+                val onSuccess = data ?: return@responseString
+                success(onSuccess)
+//                if (onSuccess.array() is JSONArray) {
+//                    //    success(onSuccess.array())
+//                } else if (onSuccess.obj() is JSONObject) {
+//                    //   success(onSuccess.obj())
+//                }
 
-         }
+            }
 
-      }
-
-         
-
-
+        }
     }
+
+
 
 
 

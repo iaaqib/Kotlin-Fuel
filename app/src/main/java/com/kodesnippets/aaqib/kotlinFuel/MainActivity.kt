@@ -13,6 +13,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
+import com.fasterxml.jackson.module.kotlin.readValues
+
 import org.json.JSONArray
 
 
@@ -34,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-        first.getData = "I am BATMAN!"
+        first.getData = ""
         supportFragmentManager.beginTransaction().replace(R.id.fragment, first).commit();
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
@@ -46,23 +51,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
 
-        val posts = "https://jsonplaceholder.typicode.com/posts"
+
+
+
+
+
+
+
+
+
+
+/*        val posts = "https://jsonplaceholder.typicode.com/posts"
         NetworkConfig.getRequest(posts,success = { response ->
 
-            if (response is JSONArray){
+         //   if (response is JSONArray){
             val jsonArray = response
-            for (item in 0..(jsonArray.length() - 1)) {
-                val getJSONObject = jsonArray.getJSONObject(item)
-                Log.d("UserID", getJSONObject["userId"].toString())
-                Log.d("Title", getJSONObject["title"].toString())
-                Log.d("Body", getJSONObject["body"].toString())
-                Toast.makeText(this,getJSONObject["title"].toString(),Toast.LENGTH_LONG).show()
+     //       val mapper = jacksonObjectMapper()
+       //         val state  = mapper.readValue<Models.PostModel>(response)
+       //     Log.d("Mode;",state.title)
+       //     Log.d("Mapped::",state.body)
 
-            }
-        }
+//                for (item in 0..(jsonArray.length() - 1)) {
+//                val getJSONObject = jsonArray.getJSONObject(item)
+//                Log.d("UserID", getJSONObject["userId"].toString())
+//                Log.d("Title", getJSONObject["title"].toString())
+//                Log.d("Body", getJSONObject["body"].toString())
+//                Toast.makeText(this,getJSONObject["title"].toString(),Toast.LENGTH_LONG).show()
+//
+//           // }
+//        }
         },failure ={ error ->
 
-        } )
+        } )*/
 
     }
 
@@ -121,3 +141,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 }
+
+
