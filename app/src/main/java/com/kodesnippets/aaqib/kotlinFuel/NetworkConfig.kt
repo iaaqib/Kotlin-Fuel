@@ -1,6 +1,7 @@
 package com.kodesnippets.aaqib.kotlinFuel
 
 import android.util.Log
+import android.widget.ProgressBar
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.android.extension.responseJson
 import com.github.kittinunf.fuel.core.FuelError
@@ -17,7 +18,8 @@ object NetworkConfig {
 
     fun getRequest(url: String, success: (String) -> Unit, failure: (FuelError) -> Unit) {
 
-        Fuel.get(url).responseString { request, response, result ->
+
+        Fuel.get(url).responseString() { request, response, result ->
 
             val (data, error) = result
             if (error != null) {

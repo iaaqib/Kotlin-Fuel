@@ -13,12 +13,16 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.beust.klaxon.JsonArray
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.readValues
 
 import org.json.JSONArray
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -59,30 +63,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-
-
-/*        val posts = "https://jsonplaceholder.typicode.com/posts"
-        NetworkConfig.getRequest(posts,success = { response ->
-
-         //   if (response is JSONArray){
-            val jsonArray = response
-     //       val mapper = jacksonObjectMapper()
-       //         val state  = mapper.readValue<Models.PostModel>(response)
-       //     Log.d("Mode;",state.title)
-       //     Log.d("Mapped::",state.body)
-
-//                for (item in 0..(jsonArray.length() - 1)) {
-//                val getJSONObject = jsonArray.getJSONObject(item)
-//                Log.d("UserID", getJSONObject["userId"].toString())
-//                Log.d("Title", getJSONObject["title"].toString())
-//                Log.d("Body", getJSONObject["body"].toString())
-//                Toast.makeText(this,getJSONObject["title"].toString(),Toast.LENGTH_LONG).show()
-//
-//           // }
-//        }
-        },failure ={ error ->
-
-        } )*/
 
     }
 

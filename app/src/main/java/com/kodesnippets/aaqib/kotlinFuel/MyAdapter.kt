@@ -9,9 +9,9 @@ import android.widget.TextView
 /**
  * Created by silen on 7/22/2017.
  */
-class MyAdapter(dataSet: ArrayList<String>) : RecyclerView.Adapter<MyAdapter.ViewHolder>(){
+class MyAdapter(dataSet: List<String>) : RecyclerView.Adapter<MyAdapter.ViewHolder>(){
 
-    val dataSet : ArrayList<String> = dataSet
+    val dataSet : List<String> = dataSet
     final var onClick : (View)-> Unit = {}
 
      class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
